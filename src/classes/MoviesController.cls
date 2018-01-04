@@ -23,6 +23,7 @@ public class MoviesController {
         List<SelectOption> options = new List<SelectOption>();
         options.add(new SelectOption('All','All'));
         options.add(new SelectOption('Upcoming Movies','Upcoming Movies'));
+        options.add(new SelectOption('Suggested Movies','Suggested Movies'));
         options.add(new SelectOption('Box Office','Box Office'));
         options.add(new SelectOption('Home Theater','Home Theater'));
         return options;
@@ -62,8 +63,7 @@ public class MoviesController {
         try {
             listNewMovies = [SELECT Id, Name, Poster_Link__c, Rating__c, Release_Date__c, Anticipation__c,
                           	 Combined_Rating__c, Location__c, View_Date__c, RecordTypeId 
-                             From Movie__c Where RecordTypeId =: boxOffice AND View_Date__c = null 
-                             Order By Release_Date__c ASC];
+                             From Movie__c Where View_Date__c = null Order By Release_Date__c ASC];
             
         } catch(Exception ex) {
             logException('Exception in getNewMovies', ex);
