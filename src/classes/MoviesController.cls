@@ -6,6 +6,10 @@ public class MoviesController {
     String section = 'All';
     public String boxOffice = Schema.sObjectType.Movie__c.getRecordTypeInfosByName().get('Box Office').getRecordTypeId();
     public String homeTheater = Schema.sObjectType.Movie__c.getRecordTypeInfosByName().get('Home Theater').getRecordTypeId();
+	public Integer yearSearch {get;set;}
+	public String movieName {get; set;}
+	public Date releaseDate {get; set;}
+	
 	
     public MoviesController(){
 
@@ -106,5 +110,22 @@ public class MoviesController {
         if(!options.isEmpty()) yearInstalled = options.get(0).getValue();
         
         return options;
+    }
+    
+    public void save(){
+    	
+    	if(movieName != null && releaseDate != null){
+    		List<Movie__c> movieList = [Select Id, Name From Movie__c Where Name =: movieName];
+	    	system.debug(movieList);
+	    	
+	    	if(movieList.isEmpty()){
+	    		Movie__c m = new Movie__c(
+		    	Name = movieName,
+		    	Release_Date__c = releaseDate,
+		    	RecordTypeId = homeTheater
+		    	);
+		    	insert m;
+	    	}
+    	}	
     }
 }
