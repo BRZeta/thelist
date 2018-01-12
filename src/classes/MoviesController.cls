@@ -91,6 +91,21 @@ public class MoviesController {
         return listMovies;
     }
     
+    //list of movies that were searched for in the search section
+    public List<Movie__c> getSearchedMovies() {
+
+        List<Movie__c> listSearchedMovies;
+
+        try {
+            listSearchedMovies = [SELECT Id, Name, Money_Rating__c, View_Date__c, Poster_Link__c, Rating__c,
+                          Combined_Rating__c, Location__c, Release_Date__c
+                          From Movie__c Where Name LIKE : '%' + movieName + '%' Order By View_Date__c DESC];
+        } catch(Exception ex) {
+            logException('Exception in getMovies', ex);
+        }
+        return listSearchedMovies;
+    }
+    
     private void logException(String errorTitle, Exception ex) {
         String placholderMsg = '\n {0} \n Error: {1} \n Stack Trace: {2}';
         String[] fillers = new String[] {errorTitle, ex.getMessage(), ex.getStackTraceString()};
@@ -141,6 +156,14 @@ public class MoviesController {
     				ApexPages.addMessage(myMsg);
 		    	}
 		    }*/
+    	}	
+    }
+    
+    public void searchMovie(){
+    	
+    	if(movieName != null){
+    		List<Movie__c> movieList = [Select Id, Name From Movie__c Where Name LIKE : '%' + movieName + '%'];
+	    	system.debug(movieList);
     	}	
     }
 }
