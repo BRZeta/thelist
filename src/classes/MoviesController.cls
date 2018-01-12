@@ -129,7 +129,7 @@ public class MoviesController {
 	    	}
 	    	
 	    	Database.SaveResult[] srList = Database.insert(newMovies, false);
-		    
+		    /*
 		    for (Database.SaveResult sr : srList) {
 		    	if(sr.isSuccess()){
 		    		//ApexPages.addmessage(new ApexPages.message(ApexPages.severity.CONFIRM,'Suggested Movie has been added to the page!'));
@@ -140,7 +140,7 @@ public class MoviesController {
 		    		ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,'Error when adding movie.');
     				ApexPages.addMessage(myMsg);
 		    	}
-		    }
+		    }*/
     	}	
     }
 }
