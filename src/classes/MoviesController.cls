@@ -6,6 +6,10 @@ public class MoviesController {
     String section = 'All';
     public String boxOffice = Schema.sObjectType.Movie__c.getRecordTypeInfosByName().get('Box Office').getRecordTypeId();
     public String homeTheater = Schema.sObjectType.Movie__c.getRecordTypeInfosByName().get('Home Theater').getRecordTypeId();
+	public Integer yearSearch {get;set;}
+	public String movieName {get; set;}
+	public Date releaseDate {get; set;}
+	
 	
     public MoviesController(){
 
@@ -23,6 +27,7 @@ public class MoviesController {
         List<SelectOption> options = new List<SelectOption>();
         options.add(new SelectOption('All','All'));
         options.add(new SelectOption('Upcoming Movies','Upcoming Movies'));
+        options.add(new SelectOption('Suggested Movies','Suggested Movies'));
         options.add(new SelectOption('Box Office','Box Office'));
         options.add(new SelectOption('Home Theater','Home Theater'));
         return options;
@@ -62,8 +67,7 @@ public class MoviesController {
         try {
             listNewMovies = [SELECT Id, Name, Poster_Link__c, Rating__c, Release_Date__c, Anticipation__c,
                           	 Combined_Rating__c, Location__c, View_Date__c, RecordTypeId 
-                             From Movie__c Where RecordTypeId =: boxOffice AND View_Date__c = null 
-                             Order By Release_Date__c ASC];
+                             From Movie__c Where View_Date__c = null Order By Release_Date__c ASC];
             
         } catch(Exception ex) {
             logException('Exception in getNewMovies', ex);
@@ -106,5 +110,37 @@ public class MoviesController {
         if(!options.isEmpty()) yearInstalled = options.get(0).getValue();
         
         return options;
+    }
+    
+    public void save(){
+    	
+    	if(movieName != null && releaseDate != null){
+    		List<Movie__c> movieList = [Select Id, Name From Movie__c Where Name =: movieName];
+	    	system.debug(movieList);
+	    	List<Movie__c> newMovies = new List<Movie__c>();
+	    	
+	    	if(movieList.isEmpty()){
+	    		Movie__c m = new Movie__c(
+		    	Name = movieName,
+		    	Release_Date__c = releaseDate,
+		    	RecordTypeId = homeTheater
+		    	);
+		    	newMovies.add(m);
+	    	}
+	    	
+	    	Database.SaveResult[] srList = Database.insert(newMovies, false);
+		    /*
+		    for (Database.SaveResult sr : srList) {
+		    	if(sr.isSuccess()){
+		    		//ApexPages.addmessage(new ApexPages.message(ApexPages.severity.CONFIRM,'Suggested Movie has been added to the page!'));
+		    		ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
+    				ApexPages.addMessage(myMsg);
+		    	} else {
+		    		//ApexPages.addmessage(new ApexPages.message(ApexPages.severity.ERROR,'It looks like there was an error when adding your movie.'));
+		    		ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,'Error when adding movie.');
+    				ApexPages.addMessage(myMsg);
+		    	}
+		    }*/
+    	}	
     }
 }
