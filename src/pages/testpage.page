@@ -264,18 +264,6 @@
             	padding-top: 2px;
             }
             
-            .ave-button {
-            	float: right;
-            	color: #fff;
-            	border: 1px solid black;
-            	background-color: #9A3334;
-            	border-radius: 10px;
-            	padding: 5px 10px;
-            	text-decoration: none;
-            	margin-right: 10%;
-            	display: inline-block;
-            }
-            
             .save-button {
             	float: right;
             	text-decoration: none;
@@ -297,7 +285,7 @@
 				padding-top: inherit;
 				padding-bottom: inherit;
 				width: 2.8em;
-				content: "";
+				content: "\01F50D";
 				font-family: 'FontAwesome', sans-serif;
 				text-align: center;
 				transition: .2s;
@@ -593,6 +581,7 @@
         <apex:outputPanel id="suggested-panel">
         <apex:outputPanel rendered="{!OR(IF(section == 'All', true , false), IF(section == 'Suggested Movies', true , false))}">
             <section class="suggested-section js--suggested-section" id="suggested">
+                <apex:pageMessages id="showmsg"></apex:pageMessages>
                 <div class="row">
                     <p class="section-title"> Suggested Movies </p>
                 </div>
@@ -648,7 +637,7 @@
                 <div class="row movie-suggestion">
                 <apex:outputPanel>
 	                <p>Movie Name: 
-	               	<apex:inputText value="{!movieName}" styleClass="input-box"/></p>
+	               	<apex:inputText value="{!movieName}" styleClass="input-box"/></p> 
 	            	<p>Release Date:  
 	               	<apex:input type="date" value="{!releaseDate}" styleClass="input-box"/></p>
 	                <apex:commandLink action="{!save}" value="Search" reRender="suggested-panel" styleClass="save-button"/>

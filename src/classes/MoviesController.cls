@@ -117,6 +117,7 @@ public class MoviesController {
     	if(movieName != null && releaseDate != null){
     		List<Movie__c> movieList = [Select Id, Name From Movie__c Where Name =: movieName];
 	    	system.debug(movieList);
+	    	List<Movie__c> newMovies = new List<Movie__c>();
 	    	
 	    	if(movieList.isEmpty()){
 	    		Movie__c m = new Movie__c(
@@ -124,8 +125,22 @@ public class MoviesController {
 		    	Release_Date__c = releaseDate,
 		    	RecordTypeId = homeTheater
 		    	);
-		    	insert m;
+		    	newMovies.add(m);
 	    	}
+	    	
+	    	Database.SaveResult[] srList = Database.insert(newMovies, false);
+		    
+		    for (Database.SaveResult sr : srList) {
+		    	if(sr.isSuccess()){
+		    		//ApexPages.addmessage(new ApexPages.message(ApexPages.severity.CONFIRM,'Suggested Movie has been added to the page!'));
+		    		ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.FATAL,'my error msg');
+    				ApexPages.addMessage(myMsg);
+		    	} else {
+		    		//ApexPages.addmessage(new ApexPages.message(ApexPages.severity.ERROR,'It looks like there was an error when adding your movie.'));
+		    		ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,'Error when adding movie.');
+    				ApexPages.addMessage(myMsg);
+		    	}
+		    }
     	}	
     }
 }
