@@ -1,5 +1,5 @@
 /**
- * @Business: Invocable Method to be used from Visual Workflow Button
+ * @Business: Invocable Method to be used from Visual Workflow Button to Get TMDB ID
  * @Date: 2018-01-18
  * @Author: JOSE ALCALA
  * ModifiedDate   Description
@@ -8,10 +8,11 @@
 public class GetMovieInformation {
 	
 	public class MovieList {
-        public KeyWordItem[] keywords;
+        public MovieItem[] results;
     }
-    public class KeyWordItem {
-        public String CONTAINER, id, name;
+    public class MovieItem {
+        public String CONTAINER, id, poster_path, title;
+        public Date release_date;
     }
 	
     @InvocableMethod
@@ -22,8 +23,10 @@ public class GetMovieInformation {
 
     	for(Movie__c m : movies){
 
-			String searchURL = 'https://api.themoviedb.org/3/movie/' +m.TMDB_ID__c + '/keywords?api_key=' + 
-								System.Label.TMDB_API_Key;
+    		String startURL = 'https://image.tmdb.org/t/p/w300';
+			String movieName = EncodingUtil.urlEncode( m.Name, 'UTF-8');
+			String searchURL = 'https://api.themoviedb.org/3/search/movie?api_key=' + System.Label.TMDB_API_Key +
+							   '&page=1&include_adult=false&query=' + movieName;
 
 			Http http = new Http();
 			HttpRequest request = new HttpRequest();
@@ -36,23 +39,18 @@ public class GetMovieInformation {
 				// Parse the data according to the results class
 		        MovieList data = (MovieList)JSON.deserialize(response.getBody(), MovieList.class);
 		        system.debug('data returned: '+ data);
-		        
-	        	Set<String> keyWordSet = new Set<String>();
-		        for(KeyWordItem kw : data.keywords) {
-		        	keyWordSet.add(kw.name);
-		        }
-		        String keyWords = String.join(new List<String>(keyWordSet), ',');
-		        
-		        if(keyWords != ''){
-		        	m.Key_Words__c = keyWords;
-		        	newInfo.add(m);
-		        } else {
-		        	m.Key_Words__c = 'TBD';
-		        	newInfo.add(m);
+		        // Iterate over the data
+		        for(MovieItem mi : data.results) {
+		            if(mi.release_date.year() == m.Release_Date__c.year()){
+		            	m.TMDB_ID__c = mi.id;
+		            	m.Get_Id_Callout_Made__c = True;
+		            	newInfo.add(m);
+		            	break;
+		            }
 		        }
 			}
     	}
-    	
+
     	if(!newInfo.isEmpty()){
     		update newInfo;
     	}

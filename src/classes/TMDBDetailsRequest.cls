@@ -56,6 +56,6 @@ public class TMDBDetailsRequest implements Queueable, Database.AllowsCallouts {
     		update newInfo;
     	}
     	
-    	System.enqueueJob(new TMDBGenresRequest(movieIdsSet));
+    	System.enqueueJob(new TMDBKeywordsRequest(movieIdsSet));
     }
 }
