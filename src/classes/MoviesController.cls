@@ -98,8 +98,10 @@ public class MoviesController {
 
         try {
             listSearchedMovies = [SELECT Id, Name, Money_Rating__c, View_Date__c, Poster_Link__c, Rating__c,
-                          Combined_Rating__c, Location__c, Release_Date__c
-                          From Movie__c Where Name LIKE : '%' + movieName + '%' Order By View_Date__c DESC];
+                          Combined_Rating__c, Location__c, Release_Date__c, Genres__c, Key_Words__c
+                          From Movie__c Where (Name LIKE : '%' + movieName + '%' 
+    									OR Genres__c includes (:movieName)
+    									OR Key_Words__c LIKE : '%' + movieName + '%') Order By View_Date__c DESC];
         } catch(Exception ex) {
             logException('Exception in getMovies', ex);
         }
@@ -162,7 +164,10 @@ public class MoviesController {
     public void searchMovie(){
     	
     	if(movieName != null){
-    		List<Movie__c> movieList = [Select Id, Name From Movie__c Where Name LIKE : '%' + movieName + '%'];
+    		List<Movie__c> movieList = [Select Id, Name, Genres__c From Movie__c 
+    									Where (Name LIKE : '%' + movieName + '%' 
+    									OR Genres__c includes (:'%' + movieName + '%')
+    									/*OR Key_Words__c includes (:'%' + movieName + '%')*/)]; 
 	    	system.debug(movieList);
     	}	
     }
