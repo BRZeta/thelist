@@ -13,7 +13,7 @@ public class MovieInfoParse {
 		public String overview;
 		public Double popularity;
 		public String poster_path;
-		public List<Genres> production_companies;
+		public List<Production_companies> production_companies;
 		public List<Production_countries> production_countries;
 		public Date release_date;
 		public Integer revenue;
@@ -39,6 +39,11 @@ public class MovieInfoParse {
 	}
 
 	public class Genres {
+		public Integer id;
+		public String name;
+	}
+	
+	public class Production_companies {
 		public Integer id;
 		public String name;
 	}
