@@ -12,7 +12,7 @@ public class GetMovieInformation {
     }
     public class MovieItem {
         public String CONTAINER, id, poster_path, title;
-        public Date release_date;
+        public String release_date;
     }
 	
     @InvocableMethod
@@ -23,7 +23,6 @@ public class GetMovieInformation {
 
     	for(Movie__c m : movies){
 
-    		String startURL = 'https://image.tmdb.org/t/p/w300';
 			String movieName = EncodingUtil.urlEncode( m.Name, 'UTF-8');
 			String searchURL = 'https://api.themoviedb.org/3/search/movie?api_key=' + System.Label.TMDB_API_Key +
 							   '&page=1&include_adult=false&query=' + movieName;
@@ -36,12 +35,14 @@ public class GetMovieInformation {
 			System.debug(response.getBody());
 
 			if (response.getStatusCode() == 200) {
+				
 				// Parse the data according to the results class
 		        MovieList data = (MovieList)JSON.deserialize(response.getBody(), MovieList.class);
 		        system.debug('data returned: '+ data);
-		        // Iterate over the data
+		        
+		        // Iterate over the movie data if movie is found that matches the year get the TMDB Id
 		        for(MovieItem mi : data.results) {
-		            if(mi.release_date.year() == m.Release_Date__c.year()){
+		            if(date.valueOf(mi.release_date).year() == m.Release_Date__c.year()){
 		            	m.TMDB_ID__c = mi.id;
 		            	m.Get_Id_Callout_Made__c = True;
 		            	newInfo.add(m);

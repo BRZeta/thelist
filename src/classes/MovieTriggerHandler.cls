@@ -49,7 +49,7 @@ public class MovieTriggerHandler {
     	}
 
     	if(!movieSearchSet.isEmpty()){
-    		SearchMovieInformation(movieSearchSet);
+    		TMDBMovieIdRequest(movieSearchSet);
     	}
 
     	if(!movieIdSet.isEmpty()){
@@ -58,7 +58,7 @@ public class MovieTriggerHandler {
     	}
     	
     	if(!queueableMovieSet.isEmpty()){
-    		System.enqueueJob(new TMDBDetailsRequest(queueableMovieSet));
+    		System.enqueueJob(new TMDBReleaseDatesRequest(queueableMovieSet));
     	}
     }
     public class MovieList {
@@ -67,20 +67,19 @@ public class MovieTriggerHandler {
     }
     public class MovieItem {
         public String CONTAINER, id, poster_path, title;
-        public Date release_date;
+        public String release_date;
     }
     public class KeyWordItem {
         public String CONTAINER, id, name;
     }
 
     @future(callout = true)
-    public static void SearchMovieInformation (Set<Id> movieSearchSet){
+    public static void TMDBMovieIdRequest (Set<Id> movieSearchSet){
     	List<Movie__c> movies = [Select Id, Name, TMDB_ID__c, Release_Date__c From Movie__c Where Id IN: movieSearchSet];
     	List<Movie__c> newInfo = new List<Movie__c>();
 
     	for(Movie__c m : movies){
 
-    		String startURL = 'https://image.tmdb.org/t/p/w300';
 			String movieName = EncodingUtil.urlEncode( m.Name, 'UTF-8');
 			String searchURL = 'https://api.themoviedb.org/3/search/movie?api_key=' + System.Label.TMDB_API_Key +
 							   '&page=1&include_adult=false&query=' + movieName;
@@ -93,17 +92,16 @@ public class MovieTriggerHandler {
 			System.debug(response.getBody());
 
 			if (response.getStatusCode() == 200) {
+				
 				// Parse the data according to the results class
 		        MovieList data = (MovieList)JSON.deserialize(response.getBody(), MovieList.class);
 		        system.debug('data returned: '+ data);
-		        // Iterate over the data
+		        
+		        // Iterate over the movie data if movie is found that matches the year get the TMDB Id
 		        for(MovieItem mi : data.results) {
-		            if(mi.release_date.year() == m.Release_Date__c.year()){
+		            if(date.valueOf(mi.release_date).year() == m.Release_Date__c.year()){
 		            	m.TMDB_ID__c = mi.id;
 		            	m.Get_Id_Callout_Made__c = True;
-		            	//m.Name = mi.title;
-		            	//m.Poster_Link__c = startURL + mi.poster_path;
-		            	//m.Release_Date__c = mi.release_date;
 		            	newInfo.add(m);
 		            	break;
 		            }
@@ -147,7 +145,10 @@ public class MovieTriggerHandler {
             	m.Name = movie.title;
             	m.Genres__c = genres;
             	m.Poster_Link__c = startURL + movie.poster_path;
-            	m.Release_Date__c = movie.release_date;
+            	m.Backdrop__c = startURL + movie.backdrop_path;
+            	m.Release_Date__c = date.valueOf(movie.release_date);
+            	m.Original_Language__c = movie.original_language;
+            	m.Get_Details_Callout_Made__c = True;
             	newInfo.add(m);
 			}
     	}

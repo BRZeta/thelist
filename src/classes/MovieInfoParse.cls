@@ -22,7 +22,7 @@ public class MovieInfoParse {
 		public String poster_path;
 		public List<Production_companies> production_companies;
 		public List<Production_countries> production_countries;
-		public Date release_date;
+		public String release_date;
 		public Integer revenue;
 		public Integer runtime;
 		public List<Spoken_languages> spoken_languages;
