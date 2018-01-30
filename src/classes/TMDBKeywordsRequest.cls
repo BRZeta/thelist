@@ -38,10 +38,12 @@ public class TMDBKeywordsRequest implements Queueable, Database.AllowsCallouts {
 			System.debug(response.getBody());
 
 			if (response.getStatusCode() == 200) {
+				
 				// Parse the data according to the results class
 		        MovieList data = (MovieList)JSON.deserialize(response.getBody(), MovieList.class);
 		        system.debug('data returned: '+ data);
 		        
+		        //Get the keywords associated with the movie, if there are none insert TBD
 	        	Set<String> keyWordSet = new Set<String>();
 		        for(KeyWordItem kw : data.keywords) {
 		        	keyWordSet.add(kw.name);
