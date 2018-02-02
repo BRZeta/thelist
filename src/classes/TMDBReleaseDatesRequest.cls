@@ -52,7 +52,7 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
 							m.Release_Date__c = date.valueOf(re.release_date);
                             break;
 						} else if (movie.results.size() > 1){
-							if(d.iso_3166_1 == 'US'){
+							if(d.iso_3166_1 == 'US' && re.type_Z == 3){
 								m.Release_Date__c = date.valueOf(re.release_date);
 	                            break;
 							} 
