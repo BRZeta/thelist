@@ -51,14 +51,34 @@ public class TMDBDetailsRequest implements Queueable, Database.AllowsCallouts {
 					m.Genres__c = 'TBD';
 				}
 				
-				//Get the first production country of the Movie
+				//Get the production country of the Movie
+				Set<String> pcSet = new Set<String>();
 				for(MovieInfoParse.Production_countries pc : movie.production_countries){
-					m.Production_Country__c = pc.iso_3166_1;
-					break;
+					if(movie.production_countries.size() == 1){
+						m.Production_Country__c = pc.iso_3166_1;
+						break;
+					} else if (movie.production_countries.size() > 1){
+						pcSet.add(pc.iso_3166_1);
+						String pCountries = String.join(new List<String>(pcSet), ',');
+						m.Production_Country__c = pCountries;
+					} 
+				}
+				
+				//Get the Production Companies
+				Set<String> pCompsSet = new Set<String>();
+				for(MovieInfoParse.production_companies pc : movie.production_companies){
+					if(movie.production_companies.size() == 1){
+						m.Production_Company__c = pc.name;
+					} else if(movie.production_companies.size() > 1){
+						pCompsSet.add(pc.name);
+						String pCompanies = String.join(new List<String>(pCompsSet), ',');
+						m.Production_Company__c = pCompanies;
+					}
 				}
 				
 				//If the movie belongs to a collection insert the name and image urls
 				if(movie.Belongs_to_collection != null){
+					m.Collection_Id__c = movie.Belongs_to_collection.Id;
             		m.Collection_Name__c = movie.Belongs_to_collection.name;
             		m.Collection_Poster__c = poster + movie.Belongs_to_collection.poster_path;
             		m.Collection_Backdrop__c = backdrop + movie.Belongs_to_collection.backdrop_path;

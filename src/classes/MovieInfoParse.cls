@@ -39,19 +39,19 @@ public class MovieInfoParse {
 	}
 
 	public class Belongs_to_collection {
-		public Integer id;
+		public String id;
 		public String name;
 		public String poster_path;
 		public String backdrop_path;
 	}
 
 	public class Genres {
-		public Integer id;
+		public String id;
 		public String name;
 	}
 	
 	public class Production_companies {
-		public Integer id;
+		public String id;
 		public String name;
 	}
 
