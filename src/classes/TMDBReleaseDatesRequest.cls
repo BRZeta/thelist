@@ -40,8 +40,8 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
 				// Send the response to the custom parse class to parse the data
 				MovieDateParseWrapper.MovieDateParse movie = MovieDateParseWrapper.parse(response.getBody());
 				
-				//Get the release date of the movie. If only 1 date, then insert that one, if more than one insert US
-				//If the movie was not released in the US and has more than one get the earlist release date
+				//Get the release date of the movie. If only 1 date, then insert that one, if more than one insert US general release date
+				//If the movie was not released in the US and has more than one release date get the earlist date
 				list<date> AllDates = new list<date>();
 				for(MovieDateParseWrapper.results d : movie.results){
 					
@@ -68,11 +68,12 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
             	movieIdsSet.add(m.Id);
 			}
     	}
-
+		
+		//update movie with release date
     	if(!newInfo.isEmpty()){
     		update newInfo;
     	}
+    	//execute the second callout, getting the movie details
     	System.enqueueJob(new TMDBDetailsRequest(movieIdsSet));
-    	
     }
 }

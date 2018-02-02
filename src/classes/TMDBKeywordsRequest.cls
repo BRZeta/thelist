@@ -39,7 +39,7 @@ public class TMDBKeywordsRequest implements Queueable, Database.AllowsCallouts {
 
 			if (response.getStatusCode() == 200) {
 				
-				// Parse the data according to the results class
+				//Parse the data according to the results class
 		        MovieList data = (MovieList)JSON.deserialize(response.getBody(), MovieList.class);
 		        system.debug('data returned: '+ data);
 		        
@@ -61,6 +61,7 @@ public class TMDBKeywordsRequest implements Queueable, Database.AllowsCallouts {
 			}
     	}
     	
+    	//update the movie with the keywords
     	if(!newInfo.isEmpty()){
     		update newInfo;
     	}

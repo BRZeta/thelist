@@ -96,11 +96,13 @@ public class TMDBDetailsRequest implements Queueable, Database.AllowsCallouts {
             	movieIdsSet.add(m.Id);
 			}
     	}
-
+		
+		//update movies with info from TMDB
     	if(!newInfo.isEmpty()){
     		update newInfo;
     	}
     	
+    	//execute the third api callout, getting the keywords for search
     	System.enqueueJob(new TMDBKeywordsRequest(movieIdsSet));
     }
 }
