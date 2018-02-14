@@ -78,7 +78,7 @@ public class TMDBDetailsRequest implements Queueable, Database.AllowsCallouts {
 				
 				//If the movie belongs to a collection insert the name and image urls
 				if(movie.Belongs_to_collection != null){
-					m.Collection_Id__c = movie.Belongs_to_collection.Id;
+					m.Collection_Id__c = string.valueOf(movie.Belongs_to_collection.Id);
             		m.Collection_Name__c = movie.Belongs_to_collection.name;
             		m.Collection_Poster__c = poster + movie.Belongs_to_collection.poster_path;
             		m.Collection_Backdrop__c = backdrop + movie.Belongs_to_collection.backdrop_path;

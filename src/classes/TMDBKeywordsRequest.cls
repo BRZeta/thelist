@@ -48,10 +48,19 @@ public class TMDBKeywordsRequest implements Queueable, Database.AllowsCallouts {
 		        for(KeyWordItem kw : data.keywords) {
 		        	keyWordSet.add(kw.name);
 		        }
+		        
+		        String finalKeyWords;
 		        String keyWords = String.join(new List<String>(keyWordSet), ',');
 		        
+		        if(keyWords.length() > 255){
+		        	String keyWordsFit = keyWords.subString(0,255);
+		        	finalKeyWords = keyWordsFit;
+		        } else {
+		        	finalKeyWords = keyWords;
+		        }
+		        
 		        if(keyWords != ''){
-		        	m.Key_Words__c = keyWords;
+		        	m.Key_Words__c = finalKeyWords;
 		        	newInfo.add(m);
 		        } else {
 		        	m.Key_Words__c = 'TBD';
