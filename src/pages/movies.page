@@ -11,15 +11,16 @@
 
     <body>
         <header>
+        <span id="top"></span>
             <nav>
                 <div class="row">
-                    <span class="section-selection">
+                    <!--<span class="section-selection">
                         <apex:selectList value="{!section}" multiselect="false" size="1">
-                        	<apex:outputLabel styleClass="display">&nbsp; DISPLAY SECTIONS: </apex:outputLabel> 
+                        	  <apex:outputLabel styleClass="display">&nbsp; DISPLAY SECTIONS: </apex:outputLabel> 
                         	<apex:selectOptions value="{!items}"/>
                         	<apex:actionSupport event="onchange" rerender="upcoming-panel, box-office-panel, home-panel, nav-links"/>
                     	</apex:selectList>
-                    </span>
+                    </span>-->
                 <apex:outputPanel id="nav-links" >
                     <ul class="main-nav">
                         <li> 
@@ -44,8 +45,8 @@
                 </div>
             </nav>
 
-            <div class="Landing-Page" id="top">
-                <h1>Movie Night</h1>
+            <div class="Landing-Page">
+                <!--<h1>Movie Night</h1>-->
             </div>
         </header>
         
