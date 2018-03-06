@@ -1,0 +1,47 @@
+<apex:page Controller="SingleMovieController" showHeader="false" sidebar="false" docType="html-5.0">
+<html>
+	<head>
+		<link href="{!URLFOR($Resource.SingleMovie)}" rel="stylesheet"/>
+		<link href="{!URLFOR($Resource.Grid)}" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet"/>
+		<title>{!movie.Name}</title>
+	</head>
+	
+	<body >
+		<header >
+			<div class="content">
+				<div class="sub_media">
+			    
+					<div class="left">
+					  <ul class="primary">
+					    
+					      <li class="logo">
+					        <a href="/">
+					          <img src="{!URLFOR($Resource.MovieNightLogo)}" width="91" height="81"></img>
+					        </a>
+					      </li>
+					      <li>
+					        <a href="/discover">Discover</a>
+					      </li>
+					      <li>
+					        <a href="/movie">Movies</a>
+					      </li>
+					      <li>
+					        <a href="/tv">TV Shows</a>
+					      </li>
+					      <li>
+					        <a href="/person">People</a>
+					      </li>
+					    
+					  </ul>
+					</div>
+				</div>
+			</div>		
+		</header>
+		<div style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
+		
+		</div>
+	<h1>{!movie.Name}</h1> 
+	</body>
+</html>
+</apex:page>
