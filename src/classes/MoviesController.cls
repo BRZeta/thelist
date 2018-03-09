@@ -66,7 +66,7 @@ public class MoviesController {
         
         try {
             listNewMovies = [SELECT Id, Name, Poster_Link__c, Rating__c, Release_Date__c, Anticipation__c,
-                          	 Combined_Rating__c, Location__c, View_Date__c, RecordTypeId 
+                          	 Combined_Rating__c, Location__c, View_Date__c, RecordTypeId, TMDB_ID__c
                              From Movie__c Where View_Date__c = null Order By Release_Date__c ASC];
             
         } catch(Exception ex) {
@@ -83,7 +83,7 @@ public class MoviesController {
 
         try {
             listMovies = [SELECT Id, Name, Money_Rating__c, Price__c, View_Date__c, Poster_Link__c, Rating__c,
-                          Combined_Rating__c, Location__c, RecordTypeId, Release_Date__c
+                          Combined_Rating__c, Location__c, RecordTypeId, Release_Date__c, TMDB_ID__c
                           From Movie__c Where View_Date__c != null Order By View_Date__c DESC];
         } catch(Exception ex) {
             logException('Exception in getMovies', ex);
@@ -98,7 +98,7 @@ public class MoviesController {
 
         try {
             listSearchedMovies = [SELECT Id, Name, Money_Rating__c, View_Date__c, Poster_Link__c, Rating__c,
-                          Combined_Rating__c, Location__c, Release_Date__c, Genres__c, Key_Words__c
+                          Combined_Rating__c, Location__c, Release_Date__c, Genres__c, Key_Words__c, TMDB_ID__c
                           From Movie__c Where (Name LIKE : '%' + movieName + '%' 
     									OR Genres__c includes (:movieName)
     									OR Key_Words__c LIKE : '%' + movieName + '%') Order By View_Date__c DESC];
