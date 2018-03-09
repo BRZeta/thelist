@@ -664,7 +664,8 @@
                                     <div class="back b-back">
                                         <div class="b-Title">
                                             <h3>
-                                                <apex:outputText value="{!m.Name}"></apex:outputText>
+                                            	<apex:commandLink action="/apex/movie?TMDB={!m.TMDB_ID__c}" value="{!m.Name}"/>
+                                                <!--  <apex:outputText value="{!m.Name}"></apex:outputText>-->
                                             </h3>
                                         </div>
                                         <div class="b-middle-section">
