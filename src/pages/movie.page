@@ -7,41 +7,105 @@
 		<title>{!movie.Name}</title>
 	</head>
 	
-	<body >
+	<body class="content">
 		<header >
 			<div class="content">
 				<div class="sub_media">
-			    
 					<div class="left">
 					  <ul class="primary">
 					    
-					      <li class="logo">
-					        <a href="/">
-					          <img src="{!URLFOR($Resource.MovieNightLogo)}" width="91" height="81"></img>
-					        </a>
+					      <li>
+					      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+     width="96" height="96"
+     viewBox="0 0 252 252"
+     style="fill:#f1c40f;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,252v-252h252v252z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M42,31.5c-11.60742,0 -21,9.39258 -21,21v31.5c11.60742,0 21,9.39258 21,21c0,11.60742 -9.39258,21 -21,21v31.5c0,11.60742 9.39258,21 21,21h168c11.60742,0 21,-9.39258 21,-21v-31.5c-11.60742,0 -21,-9.39258 -21,-21c0,-11.60742 9.39258,-21 21,-21v-31.5c0,-11.60742 -9.39258,-21 -21,-21zM43.3125,189l156.51563,37.73438c11.2793,2.70704 22.51758,-4.14258 25.26563,-15.42187l5.57813,-22.3125z"></path></g></g><g fill="#240606"><path d="M46.025,62.9h21.06l20.09,56.72l19.98,-56.72h21.16v78.2h-16.17v-21.38l1.61,-36.9l-21.11,58.28h-11.06l-21.06,-58.22l1.62,36.84v21.38h-16.12zM205.975,62.9v78.2h-16.11l-31.37,-51.46v51.46h-16.11v-78.2h16.11l31.42,51.56v-51.56z"></path></g></g></svg>
+					      <!-- 
+						      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="96" height="96" viewBox="0 0 252 252" style="fill:#f1c40f;">
+							     <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+							     <path d="M0,252v-252h252v252z" fill="none"></path>
+							     <g fill="#ffffff"><g id="surface1">
+							     <path d="M23.625,31.5v55.125h7.875c8.79786,0 15.75,6.95215 15.75,15.75c0,8.79786 -6.95214,15.75 -15.75,15.75h-7.875v55.125h204.75v-55.125h-7.875c-8.79785,0 -15.75,-6.95214 -15.75,-15.75c0,-8.79785 6.95215,-15.75 15.75,-15.75h7.875v-55.125zM39.375,47.25h173.25v25.10156c-13.47363,3.56836 -23.625,15.47315 -23.625,30.02344c0,14.55029 10.15137,26.45508 23.625,30.02344v25.10156h-173.25v-25.10156c13.47364,-3.56836 23.625,-15.47315 23.625,-30.02344c0,-14.55029 -10.15136,-26.45508 -23.625,-30.02344zM43.80469,181.125l166.35938,32.97656l6.39844,-32.97656h-15.99609l-2.95312,14.27344l-72.59766,-14.27344z"></path>
+							     </g></g>
+							     <g fill="#ffffff">
+							     <path d="M66.385,72.85h15.69l14.98,42.28l14.89,-42.28h15.77v58.3h-12.05v-15.94l1.2,-27.5l-15.73,43.44h-8.25l-15.69,-43.4l1.2,27.46v15.94h-12.01zM185.615,72.85v58.3h-12.01l-23.38,-38.36v38.36h-12.01v-58.3h12.01l23.42,38.44v-38.44z">
+							     </path></g></g>
+							  </svg>-->
 					      </li>
 					      <li>
-					        <a href="/discover">Discover</a>
+					      	<h1>MovieNight</h1>
 					      </li>
 					      <li>
-					        <a href="/movie">Movies</a>
+					        <a href="/apex/moviesearch">Search</a>
 					      </li>
 					      <li>
-					        <a href="/tv">TV Shows</a>
+					        <a href="/apex/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="/person">People</a>
+					        <a href="#">Stats</a>
 					      </li>
-					    
 					  </ul>
 					</div>
 				</div>
-			</div>		
+			</div>
+					
 		</header>
-		<div style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
-		
+
+		<div class="backdrop" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
+			<div class="info-container row">
+				
+			
+				<div class="col span-1-of-3">
+					<apex:image style="border-radius: 10px; border: 1px solid white; float: right;" value="{!movie.Poster_Link__c}" width="270" height="400"/>
+				</div>
+				
+				<div class="col span-1-of-3 movie-info">
+				<h1>{!movie.Name}</h1>
+				<p><b>Release Date:</b> 
+					<apex:outputText value="{0, date, MMMM d','  yyyy}">
+					    <apex:param value="{!movie.Release_Date__c}"/> 
+					</apex:outputText>
+				</p>
+				
+				<p class="{!IF(movie.Tagline__c != NULL, '', 'hide')}">{!movie.Tagline__c}</p>
+				
+				<p>{!movie.Overview__c}</p>
+				
+				<p><b>Genres:</b> {!movie.Genres__c}</p> 
+				</div>
+				
+				<div class="col span-1-of-3 stats">
+					<h1>Stats</h1>
+					<p class="{!IF(movie.Anticipation__c != NULL, '', 'hide')}"><b>Anticipation:</b> {!movie.Anticipation__c}</p>
+					<p class="{!IF(movie.View_Date__c != NULL, '', 'hide')}"><b>View Date:</b> 
+						<apex:outputText value="{0, date, MMMM d','  yyyy}">
+						    <apex:param value="{!movie.View_Date__c}"/> 
+						</apex:outputText>
+					</p>
+					<p class="{!IF(movie.Location__c != NULL, '', 'hide')}"><b>Viewing Location:</b> {!movie.Location__c}</p>
+					<p class="{!IF(movie.Theater__c != NULL, '', 'hide')}"><b>Theater:</b> {!movie.Theater__c}</p>
+					<p class="{!IF(movie.Showing__c != NULL, '', 'hide')}"><b>Showing Type:</b> {!movie.Showing__c}</p>
+					<p class="{!IF(movie.Watched__c != NULL, '', 'hide')}"><b>Watched:</b> {!movie.Watched__c}</p>
+					<p class="{!IF(movie.Harimau_Rating__c != NULL, '', 'hide')}"><b>Jose Rating:</b> {!movie.Harimau_Rating__c}</p>
+					<p class="{!IF(movie.Baby_Harimau_Rating__c != NULL, '', 'hide')}"><b>Thu Rating:</b> {!movie.Baby_Harimau_Rating__c}</p>
+					<p class="{!IF(movie.Combined_Rating__c != NULL, '', 'hide')}"><b>Combined Rating:</b> {!movie.Combined_Rating__c}</p>
+					<p class="{!IF(movie.Rating__c != NULL, '', 'hide')}">
+						<apex:image styleclass="rating" value="{! IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 4.75), $Resource.Stars5,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 4.25), $Resource.Stars4_5,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 3.75), $Resource.Stars4,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 3.25), $Resource.Stars3_5,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 2.75), $Resource.Stars3,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 2.25), $Resource.Stars2_5,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 1.75), $Resource.Stars2,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 1.25), $Resource.Stars1_5,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 0.75), $Resource.Stars1,
+	                                                                  IF(AND(NOT(ISBLANK(movie.Combined_Rating__c)),movie.Combined_Rating__c >= 0.25), $Resource.Stars_5,
+	                                                                  $Resource.Stars0))))))))))}"/>
+					</p>
+					<p class="{!IF(movie.Money_Rating__c != NULL, '', 'hide')}"><b>Money Rating:</b> {!movie.Money_Rating__c}</p>
+				</div>
+			</div>
 		</div>
-	<h1>{!movie.Name}</h1> 
+
 	</body>
 </html>
 </apex:page>
