@@ -13,21 +13,23 @@
 				<div class="sub_media">
 					<div class="left">
 					  <ul class="primary">
-					    
 					      <li>
-					      	<apex:image value="{!URLFOR($Resource.MNLogo)}"/>
+					      	<a href="/apex/home"><apex:image value="{!URLFOR($Resource.MNLogo)}"/></a>
 					      </li>
 					      <li>
-					      	<h1>MovieNight</h1>
-					      </li>
-					      <li>
-					        <a href="/apex/moviesearch">Search</a>
+					      	<h1 class="MN-Header">MovieNight</h1>
 					      </li>
 					      <li>
 					        <a href="/apex/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="#">Stats</a>
+					        <a href="/apex/moviesearch">Search</a>
+					      </li>
+					      <li>
+					        <a href="/apex/stats">Stats</a>
+					      </li>
+					      <li>
+					        <a href="/apex/info">Info</a>
 					      </li>
 					  </ul>
 					</div>
