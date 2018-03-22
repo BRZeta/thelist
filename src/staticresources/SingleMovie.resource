@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 html{
-    font-family:sans-serif;
+    font-family: 'Lato', sans-serif;
     -ms-text-size-adjust:100%;
     -webkit-text-size-adjust:100%
 }
@@ -28,7 +28,7 @@ header{
     left:0;
     background-color:#240606;
     width:100%;
-    z-index:999
+    z-index:999;
 }
 header a{
     color:#fff;
@@ -122,7 +122,7 @@ header div.right li,header ul.right li{
 }
 .backdrop {
     background-size: cover;
-	background-position: center -50px;
+	background-position: center -10px;
 	height: 100vh;
 	//background-attachment: fixed;
 	margin-top: 100px;
@@ -135,13 +135,13 @@ h1{
 .movie-info h1, .stats h1{
 	font-size: 26px;
 	color: white;
-	font-family: TiemposHeadlineWeb-Bold,Georgia,serif;
+	font-family: 'Lato', sans-serif;
 }
 p{
 	color: white;
-	font-family: TiemposHeadlineWeb-Bold,Georgia,serif;
 	font-size: 15px;
 	line-height: 1.5;
+	font-family: 'Lato', sans-serif;
 }
 .row{
 	max-width: 1280px;
@@ -156,8 +156,8 @@ body{
 .poster{
 	border: 2px solid white;
 }
-stats{
-	padding-top: 52px;
+.stats{
+	
 }
 .stats p{
 	padding-top: 15px;
@@ -166,9 +166,7 @@ stats{
 	display: none;
 }
 .movie-info p {
-	padding-top: 15px;
-	
-	
+	padding-top: 15px;	
 }
 
 .movie-info p:first-child {
