@@ -22,7 +22,7 @@
 					        <a href="/apex/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="/apex/moviesearch">Search</a>
+					        <a href="/apex/search">Search</a>
 					      </li>
 					      <li>
 					        <a href="/apex/stats">Stats</a>

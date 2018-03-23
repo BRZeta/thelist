@@ -3,7 +3,7 @@
 		<link href="{!URLFOR($Resource.StandardStyle)}" rel="stylesheet"/>
 		<link href="{!URLFOR($Resource.Grid)}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
-		<title>Stats</title>
+		<title>Home</title>
 	</head>
 	
 	<body class="content">
@@ -22,7 +22,7 @@
 					        <a href="/apex/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="/apex/moviesearch">Search</a>
+					        <a href="/apex/search">Search</a>
 					      </li>
 					      <li>
 					        <a href="/apex/stats">Stats</a>
