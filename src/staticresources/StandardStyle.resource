@@ -14,10 +14,13 @@ html{
     -webkit-text-size-adjust:100%
 }
 .row{
-	max-width: 1280px;
+	max-width: 1024px;
     margin: 0 auto;
+    border: 1px solid white;
 }
-
+body{
+	background-color: #18121E;
+}
 /* ----------------------------------------------- */
 /* HEADER FORMATTING */
 /* ----------------------------------------------- */
@@ -138,12 +141,12 @@ header div.right li,header ul.right li{
 /* BACKGROUND FORMATTING */
 /* ----------------------------------------------- */
 .backdrop {
-    background-size: cover;
+    //background-size: auto;
 	background-position: center;
 	height: 100vh;
 	background-attachment: fixed;
 	margin-top: 100px;
-	repeat: no-repeat;
+	background-repeat: no-repeat;
 }
 
 p{

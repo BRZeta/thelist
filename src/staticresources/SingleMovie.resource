@@ -144,7 +144,7 @@ p{
 	font-family: 'Lato', sans-serif;
 }
 .row{
-	max-width: 1280px;
+	max-width: 1024px;
     margin: 0 auto;
 }
 .info-container{

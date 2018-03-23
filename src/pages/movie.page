@@ -23,7 +23,7 @@
 					        <a href="/apex/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="/apex/moviesearch">Search</a>
+					        <a href="/apex/search">Search</a>
 					      </li>
 					      <li>
 					        <a href="/apex/stats">Stats</a>
@@ -40,8 +40,6 @@
 
 		<div class="backdrop" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
 			<div class="info-container row">
-				
-			
 				<div class="col span-1-of-3">
 					<apex:image style="border-radius: 10px; border: 1px solid white; float: right;" value="{!movie.Poster_Link__c}" width="270" height="400"/>
 				</div>
@@ -93,7 +91,6 @@
 				</div>
 			</div>
 		</div>
-
 	</body>
 </html>
 </apex:page>

@@ -33,11 +33,10 @@
 					  </ul>
 					</div>
 				</div>
-			</div>
-					
+			</div>	
 		</header>
 
-		<div class="backdrop" style="background-image:url({!URLFOR($Resource.HomeImage)})">
+		<div class="backdrop" style="background-image:url({!URLFOR($Resource.MoviesImage)})">
 			<div class="row">
 			</div>
 		</div>
