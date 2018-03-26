@@ -38,7 +38,7 @@
 		</header>
 
 		<div class="backdrop" style="background-image:url({!URLFOR($Resource.HomeImage)})">
-			<div class="row">
+			<div class="info-container row">
 			</div>
 		</div>
 

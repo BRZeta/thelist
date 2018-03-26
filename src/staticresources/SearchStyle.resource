@@ -55,7 +55,7 @@
 .adjacent-info{
 	padding-right: 40px;
 	padding-bottom: 100px;
-	background-color: white;
+	background:rgba(242,182,50,0.5);
 	margin: 5px 5px -125px 220px ; 
 	//margin-left: 220px;
 	//margin-bottom: -125px;
@@ -63,4 +63,10 @@
 }
 h1{
 	color: red;
+}
+.info-container{
+	padding-top: 390px;
+}
+.home-section{
+	background-color: rgb(154,51,52);
 }

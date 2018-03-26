@@ -37,7 +37,7 @@
 		</header>
 
 		<div class="backdrop" style="background-image:url({!URLFOR($Resource.MoviesImage)})">
-			<div class="row">
+			<div class="info-container row">
 			</div>
 		</div>
 

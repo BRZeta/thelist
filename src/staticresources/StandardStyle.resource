@@ -14,12 +14,11 @@ html{
     -webkit-text-size-adjust:100%
 }
 .row{
-	max-width: 1024px;
+	max-width: 1280px;
     margin: 0 auto;
-    border: 1px solid white;
 }
-body{
-	background-color: #18121E;
+//body{
+	background-color: #9A3334;
 }
 /* ----------------------------------------------- */
 /* HEADER FORMATTING */
@@ -147,8 +146,52 @@ header div.right li,header ul.right li{
 	background-attachment: fixed;
 	margin-top: 100px;
 	background-repeat: no-repeat;
+	background-color: #9A3334;
 }
 
 p{
 	color: white;
+}
+.info-container{
+	padding-top: 390px;
+}
+
+/* ----------------------------------------------- */
+/* Movie Card Back Style*/
+/* ----------------------------------------------- */
+
+.m-Back {
+    background-color: #240606;
+}
+
+.m-Title {
+    //font-size: 75%;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    height: 50px;
+    background-color: #f2b632;
+    color: #240606;
+}
+
+.m-Middle p {
+    //font-size: 70%;
+    border-bottom: 1px solid white;
+    text-align: center;
+    border-width: 80%;
+    padding: 10px 0;
+    width: 80%;
+    margin: 0 10%;
+    color: #f2b632;
+}
+.m-Rating {
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+}
+.Rating-Image {
+    margin-left: 51px;
 }

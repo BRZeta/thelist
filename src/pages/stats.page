@@ -38,7 +38,7 @@
 		</header>
 
 		<div class="backdrop" style="background-image:url({!URLFOR($Resource.StatsImage)})">
-			<div class="row">
+			<div class="info-container row">
 				<div class="col span-1-of-2">
 					<p>
 					This page is currently under development. <br/>

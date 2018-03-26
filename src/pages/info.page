@@ -38,7 +38,7 @@
 		</header>
 
 		<div class="backdrop" style="background-image:url({!URLFOR($Resource.InfoImage)})">
-			<div class="row">
+			<div class="info-container row">
 				<p><b>Platform:</b> Salesforce</p>
 				<p><b>Languages Being Used:</b> Apex, Visualforce, JavaScript, AJAX, jQuery, HTML, CSS</p>
 				<p><b>Purpose:</b> This is a project I've been working on to display some of the skills I've been working on</p>
