@@ -17,6 +17,5 @@
 	color: white;
 }
 .info-container a{
-	color: white;
-	
+	color: white;	
 }

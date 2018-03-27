@@ -47,6 +47,8 @@
 					<p><b>Purpose:</b> This is a project I've been working on to display some of my Salesforce skills and web technologies that 
 					I've been working on.</p><br/>
 					<p>You can view the my code at my <u><a href="https://github.com/BRZeta/thelist">github account</a></u></p>
+					<br/>
+					<apex:image id="SFDC" value="{!$Resource.SalesforceLogo}" width="350" height="350"/>
 				</div>
 				<div class="col span-1-of-3">
 					<h1>How it Works</h1><br/>
