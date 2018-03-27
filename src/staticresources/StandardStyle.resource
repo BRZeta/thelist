@@ -17,7 +17,7 @@ html{
 	max-width: 1280px;
     margin: 0 auto;
 }
-//body{
+body{
 	background-color: #9A3334;
 }
 /* ----------------------------------------------- */

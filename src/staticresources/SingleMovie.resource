@@ -26,13 +26,6 @@ p{
 	line-height: 1.5;
 	font-family: 'Lato', sans-serif;
 }
-.row{
-	max-width: 1280px;
-    margin: 0 auto;
-}
-.info-container{
-	padding-top: 390px;
-}
 .poster{
 	border: 2px solid white;
 }
