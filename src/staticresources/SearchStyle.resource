@@ -9,6 +9,7 @@
 .flip-container {
     perspective: 1000px;
     margin: 10px 11px;
+    margin-left: 370px;
 }
 
 /* flip the pane when hovered */
@@ -53,13 +54,22 @@
 /* Movie Information Next to Poster */
 /* ----------------------------------------------- */
 .adjacent-info{
-	padding-right: 40px;
-	padding-bottom: 100px;
-	background:rgba(242,182,50,0.5);
-	margin: 5px 5px -125px 220px;
+	background: #240606;
+	border-radius: 10px;
+	float: right;
+    width: 320px;
+    height: 300px;
+    margin-right: 370px;
+    margin-top: 10px;
 }
-h1{
-	color: red;
+.adjacent-info h1 a{
+	color: white;
+	font-size: 18px;
+	padding: 10px 10px;
+	padding-top: 30px
+}
+.adjacent-info p{
+	padding: 12px 10px;
 }
 .input-box {
     margin-left: 5px;
@@ -111,4 +121,10 @@ h1{
 
 .save-button {
     min-width: 10em;
+}
+.top-border{
+	border: 3px solid #240606;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 3px;
 }

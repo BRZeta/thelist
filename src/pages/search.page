@@ -1,5 +1,5 @@
 <apex:page Controller="MoviesController" showHeader="false" sidebar="false" docType="html-5.0">
-<apex:form>	
+<apex:form >	
 	<head>
 		<link href="{!URLFOR($Resource.StandardStyle)}" rel="stylesheet"/>
 		<link href="{!URLFOR($Resource.SearchStyle)}" rel="stylesheet"/>
@@ -47,7 +47,7 @@
 						</div>
 		                
 						<div class="row movie-suggestion">
-		                <apex:outputPanel>
+		                <apex:outputPanel >
 			                <p>Movie Name: 
 			               	<apex:inputText value="{!movieName}" styleClass="input-box"/></p> 
 			                <apex:commandLink action="{!searchMovie}" value="Search" reRender="search-panel" styleClass="save-button"/>
@@ -56,10 +56,7 @@
 
 						<div class="row movie-grid">
 							<apex:repeat value="{!SearchedMovies}" var="m">
-								<div>
-									<div class="adjacent-info">
-										<h1>{!m.Name}</h1>
-									</div>
+								<div class="top-border">
 		                           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 		                               
 		                               <div class="flipper">
@@ -109,6 +106,11 @@
 		                                   </div>
 		                               </div>
 		                           </div>
+		                           <div class="adjacent-info">
+		                           		<br/>
+										<h1><a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></h1>
+										<p>{!m.Overview__c}</p>
+									</div>
 								</div>
 		                    </apex:repeat>
 		                </div>
