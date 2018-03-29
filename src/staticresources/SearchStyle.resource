@@ -71,6 +71,12 @@
 .adjacent-info p{
 	padding: 12px 10px;
 }
+.top-border{
+	border: 3px solid #240606;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 3px;
+}
 .input-box {
     margin-left: 5px;
     border-radius: 5px;
@@ -121,10 +127,4 @@
 
 .save-button {
     min-width: 10em;
-}
-.top-border{
-	border: 3px solid #240606;
-	padding-top: 6px;
-	border-radius: 10px;
-	margin-top: 3px;
 }
