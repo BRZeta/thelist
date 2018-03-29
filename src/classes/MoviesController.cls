@@ -10,14 +10,12 @@ public class MoviesController {
 	public String movieName {get; set;}
 	public Date releaseDate {get; set;}
 	
-	
     public MoviesController(){
 
         string year_s = ApexPages.currentPage().getParameters().get('year');
         lstYear = lstYearInstalled();
         doSearch(year_s);
     }
-
 
     public PageReference test() {
         return null;
@@ -40,17 +38,6 @@ public class MoviesController {
     public void setSection(String section) {
         this.section = section;
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public void doSearch(String year_s){
 
