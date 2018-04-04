@@ -51,48 +51,31 @@
     transform: rotateY(180deg);
 }
 /* ----------------------------------------------- */
-/* Movie Information Next to Poster */
+/* Search Components */
 /* ----------------------------------------------- */
-.adjacent-info{
-	background: #240606;
-	border-radius: 10px;
-	float: right;
-    width: 320px;
-    height: 300px;
-    margin-right: 370px;
-    margin-top: 10px;
-}
-.adjacent-info h1 a{
-	color: white;
-	font-size: 18px;
-	padding: 10px 10px;
-	padding-top: 30px
-}
-.adjacent-info p{
-	padding: 12px 10px;
-}
-.top-border{
-	border: 3px solid #240606;
-	padding-top: 6px;
-	border-radius: 10px;
-	margin-top: 3px;
-}
 .input-box {
-    margin-left: 5px;
+    margin-left: 275px;
     border-radius: 5px;
-    padding-top: 2px;
+    padding: 10px;
+    //width: 300px;
+    float:left;
+	width:50%;
+	overflow:hidden;
 }
 .save-button {
-    float: right;
+    //float: right;
     text-decoration: none;
     display: inline-block;
     position: relative;
-    padding: 5px 45px;
+    padding: 12px;
     background: #FE5F55;
     border: none;
     color: white;
     border-radius: 5px;
     transition: .2s;
+    float:left;
+	width:90px;
+	overflow:hidden;
 }
 .save-button:before,
 .save-button:after {
@@ -125,6 +108,30 @@
   background: #b90c01;
 }
 
-.save-button {
-    min-width: 10em;
+/* ----------------------------------------------- */
+/* Movie Information Next to Poster */
+/* ----------------------------------------------- */
+.adjacent-info{
+	background: #240606;
+	border-radius: 10px;
+	float: right;
+    width: 320px;
+    height: 300px;
+    margin-right: 370px;
+    margin-top: 10px;
+}
+.adjacent-info h1 a{
+	color: white;
+	font-size: 18px;
+	padding: 10px 10px;
+	padding-top: 30px
+}
+.adjacent-info p{
+	padding: 12px 10px;
+}
+.top-border{
+	border: 3px solid #240606;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 3px;
 }

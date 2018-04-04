@@ -15,22 +15,22 @@
 					<div class="left">
 						<ul class="primary">
 							<li>
-								<a href="/apex/home"><apex:image value="{!URLFOR($Resource.MNLogo)}"/></a>
+								<a href="/movienight/home"><apex:image value="{!URLFOR($Resource.MNLogo)}"/></a>
 							</li>
 							<li>
 								<h1 class="MN-Header">MovieNight</h1>
 							</li>
 							<li>
-								<a href="/apex/movies">Movies</a>
+								<a href="/movienight/movies">Movies</a>
 							</li>
 							<li>
-								<a href="/apex/search">Search</a>
+								<a href="/movienight/search">Search</a>
 							</li>
 							<li>
-								<a href="/apex/stats">Stats</a>
+								<a href="/movienight/stats">Stats</a>
 							</li>
 							<li>
-								<a href="/apex/info">Info</a>
+								<a href="/movienight/info">Info</a>
 							</li>
 						</ul>
 					</div>
@@ -42,15 +42,11 @@
 			<div class="info-container row">
 				<apex:outputPanel id="search-panel">
 					<div class="home-section" id="search">
-						<div class="row">
-							<p class="section-title"> Movie Search </p>
-						</div>
-		                
-						<div class="row movie-suggestion">
+					
+						<div class="row movie-search">
 		                <apex:outputPanel >
-			                <p>Movie Name: 
-			               	<apex:inputText value="{!movieName}" styleClass="input-box"/></p> 
-			                <apex:commandLink action="{!searchMovie}" value="Search" reRender="search-panel" styleClass="save-button"/>
+			               	<div><apex:inputText value="{!movieName}" styleClass="input-box" html-placeholder="Search for Movies by Name, Genre, or Keyword"/></div>
+			                <div><apex:commandLink action="{!searchMovie}" value="Search" reRender="search-panel" styleClass="save-button"/></div>
 		                </apex:outputPanel>
 		                </div>
 
