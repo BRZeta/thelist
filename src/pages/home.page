@@ -56,7 +56,7 @@
 	                                <div class="back m-Back">
 	                                    <div class="m-Title">
 	                                        <p>
-	                                        	<u><b><a href="/apex/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a></b></u>
+	                                        	<u><b><a href="/movienight/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a></b></u>
 	                                        </p>
 	                                    </div>
 	                                    <div class="m-Middle">
@@ -109,7 +109,7 @@
 	                                <div class="back m-Back">
 	                                    <div class="m-Title">
 	                                        <p>
-	                                        	<u><b><a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></b></u>
+	                                        	<u><b><a href="/movienight/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></b></u>
 	                                        </p>
 	                                    </div>
 	                                    <div class="m-Middle">
@@ -162,7 +162,7 @@
 	                                <div class="back m-Back">
 	                                    <div class="m-Title">
 	                                        <p>
-	                                        	<u><b><a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></b></u>
+	                                        	<u><b><a href="/movienight/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></b></u>
 	                                        </p>
 	                                    </div>
 	                                    <div class="m-Middle">
