@@ -1,6 +1,7 @@
 <apex:page Controller="SingleMovieController" showHeader="false" sidebar="false" docType="html-5.0">
 <html>
 	<head>
+		<link href="{!URLFOR($Resource.StandardStyle)}" rel="stylesheet"/>
 		<link href="{!URLFOR($Resource.SingleMovie)}" rel="stylesheet"/>
 		<link href="{!URLFOR($Resource.Grid)}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
@@ -13,21 +14,23 @@
 				<div class="sub_media">
 					<div class="left">
 					  <ul class="primary">
-					    
 					      <li>
-					      	<apex:image value="{!URLFOR($Resource.MNLogo)}"/>
+					      	<a href="/movienight/home"><apex:image value="{!URLFOR($Resource.MNLogo)}"/></a>
 					      </li>
 					      <li>
-					      	<h1>MovieNight</h1>
+					      	<h1 class="MN-Header">MovieNight</h1>
 					      </li>
 					      <li>
-					        <a href="/apex/moviesearch">Search</a>
+					        <a href="/movienight/movies">Movies</a>
 					      </li>
 					      <li>
-					        <a href="/apex/movies">Movies</a>
+					        <a href="/movienight/search">Search</a>
 					      </li>
 					      <li>
-					        <a href="#">Stats</a>
+					        <a href="/movienight/stats">Stats</a>
+					      </li>
+					      <li>
+					        <a href="/movienight/info">Info</a>
 					      </li>
 					  </ul>
 					</div>
@@ -36,10 +39,8 @@
 					
 		</header>
 
-		<div class="backdrop" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
+		<div class="search-backdrop" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({!movie.Backdrop__c})">
 			<div class="info-container row">
-				
-			
 				<div class="col span-1-of-3">
 					<apex:image style="border-radius: 10px; border: 1px solid white; float: right;" value="{!movie.Poster_Link__c}" width="270" height="400"/>
 				</div>
@@ -91,7 +92,6 @@
 				</div>
 			</div>
 		</div>
-
 	</body>
 </html>
 </apex:page>

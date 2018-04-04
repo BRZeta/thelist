@@ -1,0 +1,117 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0">
+	<head>
+		<link href="{!URLFOR($Resource.StandardStyle)}" rel="stylesheet"/>
+		<link href="{!URLFOR($Resource.InfoStyle)}" rel="stylesheet"/>
+		<link href="{!URLFOR($Resource.Grid)}" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+		<title>Info</title>
+	</head>
+	
+	<body class="content">
+		<header >
+			<div class="content">
+				<div class="sub_media">
+					<div class="left">
+					  <ul class="primary">
+					    	<li>
+					      	<a href="/movienight/home"><apex:image value="{!URLFOR($Resource.MNLogo)}"/></a>
+					      </li>
+					      <li>
+					      	<h1 class="MN-Header">MovieNight</h1>
+					      </li>
+					      <li>
+					        <a href="/movienight/movies">Movies</a>
+					      </li>
+					      <li>
+					        <a href="/movienight/search">Search</a>
+					      </li>
+					      <li>
+					        <a href="/movienight/stats">Stats</a>
+					      </li>
+					      <li>
+					        <a href="/movienight/info">Info</a>
+					      </li>
+					  </ul>
+					</div>
+				</div>
+			</div>
+					
+		</header>
+
+		<div class="backdrop" style="background-image:url({!URLFOR($Resource.InfoImage)})">
+			<div class="info-container row">
+				<div class="col span-1-of-3">
+					<h1>About the Project</h1>
+					<p><b>Platform:</b>Salesforce</p><br/>
+					<p><b>Languages Being Used:</b> Apex, Visualforce, JavaScript, AJAX, jQuery, HTML, CSS</p><br/>
+					<p><b>Purpose:</b> This is a project I've been working on to display some of my Salesforce skills and web technologies that 
+					I've been working on.</p><br/>
+					<p>You can view the my code at my <u><a href="https://github.com/BRZeta/thelist">github account</a></u></p>
+					<br/>
+					<apex:image id="SFDC" value="{!$Resource.SalesforceLogo}" width="350" height="350"/>
+				</div>
+				<div class="col span-1-of-3">
+					<h1>How it Works</h1><br/>
+					<h2>Back-end:</h2>
+					<p>
+						I configured a Salesforce developer org from scratch to get everything working. I created the necessary fields,
+						workflows, page layouts, etc.
+					</p><br/>
+					<p>
+						<b>Apex:</b>I'm using apex to make a REST call out to the themoviedb.org API. When I enter a movie name and a date the call out is made.
+						Upon a successful call out I add TMDBID to the record. After the TMDBID is added further call outs are made to:
+						<ol>
+							<li>Get the correct date</li>
+							<li>Get all the movie details</li>
+							<li>Get the genres</li>
+							<li>Get the search keywords</li>
+						</ol>
+					</p>
+					<br/>
+					<h2>Front-end:</h2>
+					<p>
+						The website is built and hosted on Salesforce as well. It's a Salesforce Site that I expose to everyone.
+					</p><br/>
+					<p>
+						<b>Apex:</b>I'm using apex for the page controllers. I'm querying the database to get the records that are then displayed as movie cards.
+						<br/><br/>
+						<b>Visualforce, HTML, CSS:</b> I'm using a combination of all three to style the website and display the movie information.
+						<br/><br/>
+						<b>JavaScript, jQuery, AJAX:</b> I using these for any animations and the page re-renderings when searching for movies.
+					</p>
+				</div>
+				<div class="col span-1-of-3">
+					<h1>About Me</h1><br/>
+					<h2>Admin</h2>
+					<p>
+						I've been working with the Salesforce platform since the summer of 2015. I got certified at the end of 2015 and began my career as an Admin.
+						I have configured just about everything under the setup menu. I can do just about anything configuration wise with Salesforce.
+						<br/><br/>
+						In my time as an admin I attained 5 Salesforce Certifications
+						<ol>
+							<li>Salesforce Certified Advanced Administrator</li>
+							<li>Salesforce Certified Administrator</li>
+							<li>Salesforce Certified Sales Cloud Consultant</li>
+							<li>Salesforce Certified Service Cloud Consultant</li>
+							<li>Salesforce Certified Platform App Builder</li>
+						</ol>
+					</p>
+					<br/>
+					<h2>Developer</h2>
+					<p>
+						After becoming comfortable with the admin side of Salesforce I began my path as a developer. I have authored hundreds of apex classes
+						and modified dozens more. I can create visualforce pages with custom controllers, add content with HTML, and stylize with CSS. 
+						I've been working on JavaScript to further modify pages and to begin my path towards Lightning Development.
+						<br/><br/>
+						In my time as a developer I've attained the 1 more certification and working on Platform Developer II
+						<ol>
+							<li>Salesforce Certified Platform Developer I</li>
+						</ol>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	
+</apex:page>

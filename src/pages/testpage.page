@@ -635,7 +635,7 @@
                     </apex:repeat>
                 </div>
                 <div class="row movie-suggestion">
-                <apex:outputPanel>
+                <apex:outputPanel >
 	                <p>Movie Name: 
 	               	<apex:inputText value="{!movieName}" styleClass="input-box"/></p> 
 	            	<p>Release Date:  

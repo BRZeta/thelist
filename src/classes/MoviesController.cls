@@ -10,14 +10,12 @@ public class MoviesController {
 	public String movieName {get; set;}
 	public Date releaseDate {get; set;}
 	
-	
     public MoviesController(){
 
         string year_s = ApexPages.currentPage().getParameters().get('year');
         lstYear = lstYearInstalled();
         doSearch(year_s);
     }
-
 
     public PageReference test() {
         return null;
@@ -40,17 +38,6 @@ public class MoviesController {
     public void setSection(String section) {
         this.section = section;
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public void doSearch(String year_s){
 
@@ -97,7 +84,7 @@ public class MoviesController {
         List<Movie__c> listSearchedMovies;
 
         try {
-            listSearchedMovies = [SELECT Id, Name, Money_Rating__c, View_Date__c, Poster_Link__c, Rating__c,
+            listSearchedMovies = [SELECT Id, Name, Money_Rating__c, View_Date__c, Poster_Link__c, Rating__c, Overview__c,
                           Combined_Rating__c, Location__c, Release_Date__c, Genres__c, Key_Words__c, TMDB_ID__c
                           From Movie__c Where (Name LIKE : '%' + movieName + '%' 
     									OR Genres__c includes (:movieName)
