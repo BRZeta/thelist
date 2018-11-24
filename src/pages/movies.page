@@ -55,7 +55,7 @@
 	                                <div class="back m-Back">
 	                                    <div class="m-Title">
 	                                        <p>
-	                                        	<a href="/apex/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a>
+	                                        	<a href="/movienight/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a>
 	                                        </p>
 	                                    </div>
 	                                    <div class="m-Middle">
@@ -110,7 +110,7 @@
                              <div class="back m-Back">
                                  <div class="m-Title">
                                      <p>
-                                     	<a href="/apex/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a>
+                                     	<a href="/movienight/movie?TMDB={!nm.TMDB_ID__c}">{!nm.Name}</a>
                                      </p>
                                  </div>
                                  <div class="m-Middle">
@@ -163,7 +163,7 @@
                                 <div class="back m-Back">
                                     <div class="m-Title">
                                         <p>
-                                        	<a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a>
+                                        	<a href="/movienight/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a>
                                         </p>
                                     </div>
                                     <div class="m-Middle">
@@ -216,7 +216,7 @@
                                 <div class="back m-Back">
                                     <div class="m-Title">
                                         <h3>
-                                        	<a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a>
+                                        	<a href="/movienight/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a>
                                         </h3>
                                     </div>
                                     <div class="m-Middle">

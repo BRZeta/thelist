@@ -15,7 +15,7 @@ public class HomeController {
         try {
             listNewMovies = [SELECT Id, Name, Poster_Link__c, Rating__c, Release_Date__c, Anticipation__c,
                           	 Combined_Rating__c, Location__c, View_Date__c, RecordTypeId, TMDB_ID__c
-                             From Movie__c Where View_Date__c = null AND Release_Date__c >: system.today()
+                             From Movie__c Where View_Date__c = null AND Release_Date__c >=: system.today()
                              Order By Release_Date__c ASC LIMIT 5];
             
         } catch(Exception ex) {

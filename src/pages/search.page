@@ -104,7 +104,7 @@
 		                           </div>
 		                           <div class="adjacent-info">
 		                           		<br/>
-										<h1><a href="/apex/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></h1>
+										<h1><a href="/movienight/movie?TMDB={!m.TMDB_ID__c}">{!m.Name}</a></h1>
 										<p>{!m.Overview__c}</p>
 									</div>
 								</div>
