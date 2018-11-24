@@ -48,18 +48,36 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
 					system.debug('value of d: '+ d);
 					
 					for(MovieDateParseWrapper.Release_dates re: d.release_dates){
-						if(movie.results.size() == 1){
-							m.Release_Date__c = date.valueOf(re.release_date);
-                            break;
-						} else if (movie.results.size() > 1){
-							if(d.iso_3166_1 == 'US' && re.type_Z == 3){
+						system.debug('value of re: ' + re);
+						if(d.iso_3166_1 == 'US'){
+							if(re.type_Z == 3){
+								system.debug('in code for release date type 3');
 								m.Release_Date__c = date.valueOf(re.release_date);
-	                            break;
-							} 
+							} else if (re.type_Z == 2){
+								system.debug('in code for release date type 2');
+								m.Release_Date__c = date.valueOf(re.release_date);
+							} else if (re.type_Z == 1){
+								system.debug('in code for release date type 1');
+								m.Release_Date__c = date.valueOf(re.release_date);
+							}
 						} else {
+							system.debug('in code for else: ' + AllDates);
 							AllDates.add(date.valueOf(re.release_date));
                             AllDates.sort();
                             m.Release_Date__c = AllDates[0];
+						}
+						
+						if(d.iso_3166_1 == 'US'){
+							system.debug('in code for release date US');
+							
+							if(re.type_Z == 4){
+								system.debug('in code for release date type 4');
+								m.Home_Release_Date__c = date.valueOf(re.release_date);
+								break;
+							} else if(re.type_Z == 5){
+								system.debug('in code for release date type 5');
+								m.Home_Release_Date__c = date.valueOf(re.release_date);
+							}
 						}
 					}
 				}
