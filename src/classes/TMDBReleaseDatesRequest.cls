@@ -4,6 +4,7 @@
  * @Author: JOSE ALCALA
  * ModifiedDate   Description
  * 2018-01-21     Initial Development
+ * 2018-11-23     Get the home release date
 */
 public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallouts {
     
@@ -18,11 +19,6 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
         List<Movie__c> movies = [Select Id, TMDB_ID__c From Movie__c Where Id IN: movieIds];
         List<Movie__c> newInfo = New List<Movie__c>();
         Set<Id> movieIdsSet = new Set<Id>();
-        
-        //Urls for Posters and Backdrops
-        String poster = 'https://image.tmdb.org/t/p/w342';
-        String backdrop = 'https://image.tmdb.org/t/p/original';
-        String collectionPoster = 'https://image.tmdb.org/t/p/w342';
         
         for(Movie__c m : movies){
 
