@@ -1,26 +1,25 @@
 /**
- * @Business: Queueable Class to make the Details TMDB call out
- * @Date: 2018-01-21
+ * @Business: Invocable Method to be used from Process Builder to get Home Release Date
+ * @Date: 2018-01-18
  * @Author: JOSE ALCALA
  * ModifiedDate   Description
- * 2018-01-21     Initial Development
- * 2018-11-23     Get the home release date
+ * 2018-11-25     Initial Development
 */
-public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallouts {
-    
-    private Set<Id> movieIds;
-    
-    public TMDBReleaseDatesRequest(Set<Id> queueableMovieSet){
-    	this.movieIds = queueableMovieSet;
-    }
-    
-    public void execute(QueueableContext context) {
-        
-        List<Movie__c> movies = [Select Id, TMDB_ID__c From Movie__c Where Id IN: movieIds];
-        List<Movie__c> newInfo = New List<Movie__c>();
-        Set<Id> movieIdsSet = new Set<Id>();
-        
-        for(Movie__c m : movies){
+public class TMDBHomeReleaseRequest {
+	
+	@InvocableMethod(
+	label='Get Home Release Date' description='Sends a call out to TMDB API to get the home release date')
+	public static void getReleaseDates(List<ID> movieIds) {
+		getReleaseDatesFuture(movieIds);
+	}
+	
+	@future(callout=true)
+  	public static void getReleaseDatesFuture(List<ID> movieIds) {
+    	
+    	List<Movie__c> movies = [Select Id, Name, TMDB_ID__c, Release_Date__c From Movie__c Where Id IN: movieIds];
+    	List<Movie__c> newInfo = new List<Movie__c>();
+    	
+    	for(Movie__c m : movies){
 
 			String searchURL = 'https://api.themoviedb.org/3/movie/' +m.TMDB_ID__c + '/release_dates?api_key=' + 
 								System.Label.TMDB_API_Key;
@@ -45,23 +44,6 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
 					
 					for(MovieDateParseWrapper.Release_dates re: d.release_dates){
 						system.debug('value of re: ' + re);
-						if(d.iso_3166_1 == 'US'){
-							if(re.type_Z == 3){
-								system.debug('in code for release date type 3');
-								m.Release_Date__c = date.valueOf(re.release_date);
-							} else if (re.type_Z == 2){
-								system.debug('in code for release date type 2');
-								m.Release_Date__c = date.valueOf(re.release_date);
-							} else if (re.type_Z == 1){
-								system.debug('in code for release date type 1');
-								m.Release_Date__c = date.valueOf(re.release_date);
-							}
-						} else {
-							system.debug('in code for else: ' + AllDates);
-							AllDates.add(date.valueOf(re.release_date));
-                            AllDates.sort();
-                            m.Release_Date__c = AllDates[0];
-						}
 						
 						if(d.iso_3166_1 == 'US'){
 							system.debug('in code for release date US');
@@ -77,9 +59,8 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
 						}
 					}
 				}
-				m.Get_Release_Dates_Callout_Made__c = True;
+				m.Get_Home_Release_Date_Call_Out_Made__c = True;
             	newInfo.add(m);
-            	movieIdsSet.add(m.Id);
 			}
     	}
 		
@@ -87,7 +68,5 @@ public class TMDBReleaseDatesRequest implements Queueable, Database.AllowsCallou
     	if(!newInfo.isEmpty()){
     		update newInfo;
     	}
-    	//execute the second callout, getting the movie details
-    	System.enqueueJob(new TMDBDetailsRequest(movieIdsSet));
-    }
+  	}
 }
